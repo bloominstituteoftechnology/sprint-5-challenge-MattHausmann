@@ -82,10 +82,14 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
 
       nameElement.textContent = `${name}, ID ${learnersMap[name]}`;
       info.textContent = `The selected learner is ${name}`
+    } else {
+      unselectCard(selectedCard);
     }
   }
 
   function unselectCard(card) {
+    selectedCard = undefined;
+    info.textContent = 'No learner is selected';
     if(card && card.classList.contains('selected')) {
       card.classList.toggle('selected');
       card.querySelector('h3').textContent = card.querySelector('h3').textContent.split(', ID')[0];
@@ -109,12 +113,6 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
     }
     return mentorsUl;
   }
-
-
-
-
-
-
 
   const footer = document.querySelector('footer')
   const currentYear = new Date().getFullYear()
